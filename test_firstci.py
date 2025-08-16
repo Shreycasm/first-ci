@@ -2,4 +2,6 @@ from firstci import add
 
 objadd = add(15, 15)
 
-objadd == 31 
+
+def test_add(objadd):
+    objadd == 31 
