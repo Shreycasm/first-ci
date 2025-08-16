@@ -6,26 +6,27 @@ on:
       - main
 
 jobs:
-  linting:
+  lint-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name : code checkout
-        uses : actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name : setup python
-        uses : actions/setup-python@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
         with:
-            python-version : '3.9'
+          python-version: '3.9'
       
-      - name : insatll dependencies
-        run : |
+      - name: Install dependencies
+        run: |
           python -m pip install --upgrade pip
           pip install flake8 pytest
         
-      - name : run falke8
-        run : |
+      - name: Run flake8 (linting)
+        run: |
+          flake8 .
+      
+      - name: Run pytest
+        run: |
           pytest -v
-    
-  
-
